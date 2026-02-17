@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manakeesh Menu Toggle</title>
+<title>Manakeesh Pro Menu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
@@ -45,21 +45,27 @@ h1 {
 .toggle-btn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 8px 16px;
+  padding: 10px 20px;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
+  transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #b03d0c;
 }
 
 .section {
   margin-top: 20px;
   background-color: var(--section-bg);
   padding: 15px 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
 }
 
 .section h2 {
@@ -73,8 +79,9 @@ h1 {
 .item {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
 .item:last-child {
@@ -85,7 +92,7 @@ h1 {
   font-weight: bold;
 }
 
-/* Arabic + English spans */
+/* English + Arabic */
 .english, .arabic {
   display: inline-block;
 }
@@ -113,14 +120,16 @@ h1 {
   }
 }
 
-/* Hide sections based on toggle */
+/* Hide sections */
 .hide {
   display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* ARABIC MENU STYLING */
+/* Arabic menu styling */
 .arabic-menu .item {
-  flex-direction: row-reverse; /* reverses order: text right, price left */
+  flex-direction: row-reverse; /* text right, price left */
 }
 
 .arabic-menu .item .price {
