@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manakeesh Menu Toggle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary-color: #D9480F;
+  --secondary-color: #333;
+  --background-color: #fff8f0;
+  --section-bg: #fff;
+  --border-color: #eee;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+}
+
+.container {
+  max-width: 550px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Cairo', sans-serif;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: gray;
+  margin-bottom: 15px;
+}
+
+.toggle-btn {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.section {
+  margin-top: 20px;
+  background-color: var(--section-bg);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+  margin-top: 0;
+  font-family: 'Cairo', sans-serif;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.price {
+  font-weight: bold;
+}
+
+/* Arabic + English spans */
+.english, .arabic {
+  display: inline-block;
+}
+
+.english {
+  flex: 1;
+}
+
+.arabic {
+  flex: 1;
+  text-align: right;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* Responsive */
+@media(max-width: 400px) {
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .arabic {
+    text-align: left;
+    margin-top: 2px;
+  }
+}
+
+/* Hide sections based on toggle */
+.hide {
+  display: none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Manakeesh Menu</h1>
+<p class="subtitle">Fresh Lebanese Bakery</p>
+
+<button class="toggle-btn" onclick="toggleLanguage()">Show Arabic</button>
+
+<!-- English Menu -->
+<div id="english-menu">
+  <div class="section">
+    <h2>Traditional</h2>
+    <div class="item"><span class="english">Zaatar</span><span class="price">50,000 LBP</span></div>
+    <div class="item"><span class="english">Cheese</span><span class="price">70,000 LBP</span></div>
+    <div class="item"><span class="english">Zaatar + Cheese</span><span class="price">75,000 LBP</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Special</h2>
+    <div class="item"><span class="english">Lahm bi Ajeen</span><span class="price">90,000 LBP</span></div>
+    <div class="item"><span class="english">Sujuk</span><span class="price">95,000 LBP</span></div>
+    <div class="item"><span class="english">Muhammara</span><span class="price">85,000 LBP</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Extras</h2>
+    <div class="item"><span class="english">Vegetables</span><span class="price">10,000 LBP</span></div>
+    <div class="item"><span class="english">Labneh</span><span class="price">20,000 LBP</span></div>
+  </div>
+</div>
+
+<!-- Arabic Menu -->
+<div id="arabic-menu" class="hide">
+  <div class="section">
+    <h2>تقليدية</h2>
+    <div class="item"><span class="arabic">زعتر</span><span class="price">50,000 ل.ل</span></div>
+    <div class="item"><span class="arabic">جبنة</span><span class="price">70,000 ل.ل</span></div>
+    <div class="item"><span class="arabic">زعتر + جبنة</span><span class="price">75,000 ل.ل</span></div>
+  </div>
+
+  <div class="section">
+    <h2>خاصة</h2>
+    <div class="item"><span class="arabic">لحم بعجين</span><span class="price">90,000 ل.ل</span></div>
+    <div class="item"><span class="arabic">سجق</span><span class="price">95,000 ل.ل</span></div>
+    <div class="item"><span class="arabic">محمرة</span><span class="price">85,000 ل.ل</span></div>
+  </div>
+
+  <div class="section">
+    <h2>إضافات</h2>
+    <div class="item"><span class="arabic">خضار</span><span class="price">10,000 ل.ل</span></div>
+    <div class="item"><span class="arabic">لبنة</span><span class="price">20,000 ل.ل</span></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggleLanguage() {
+  const eng = document.getElementById('english-menu');
+  const ar = document.getElementById('arabic-menu');
+  const btn = document.querySelector('.toggle-btn');
+
+  if (eng.classList.contains('hide')) {
+    eng.classList.remove('hide');
+    ar.classList.add('hide');
+    btn.textContent = 'Show Arabic';
+  } else {
+    eng.classList.add('hide');
+    ar.classList.remove('hide');
+    btn.textContent = 'Show English';
+  }
+}
+</script>
+
+</body>
+</html>
